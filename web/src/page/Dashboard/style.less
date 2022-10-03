@@ -1,0 +1,67 @@
+@sider-toolbar-width: 40px;
+
+.page-config {
+  width: 100%;
+  height: calc(100vh - 64px);
+  position: relative;
+
+  .page-config-container {
+    height: 100%;
+    position: relative;
+
+    .page-sider {
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+
+      .sider-toolbar {
+        height: 100%;
+        width: @sider-toolbar-width;
+        background-color: @color-main-background;
+        position: relative;
+      }
+
+      .sider-panel {
+        height: 100%;
+        flex-grow: 1;
+        display: inline-block;
+        overflow-y: scroll;
+        border-right: 1px solid @border-primary-color;
+
+        &>div {
+          padding: 10px;
+        }
+      }
+    }
+
+    .page-editor {
+      overflow: scroll;
+      height: 100%;
+
+      .react-grid-layout {
+        min-height: 100%;
+      }
+
+      .selected-container {
+        border: 1px solid #3498db !important;
+      }
+
+      .unSelected-container {
+        padding: 3px;
+        border: 1px solid #fff;
+        vertical-align: middle;
+
+        &:hover {
+          border: 1px dashed #3498db;
+        }
+      }
+
+      // border: 1px solid @border-primary-color;
+    }
+
+    .props-editor {
+      overflow: hidden;
+      border-left: 1px solid @border-primary-color;
+    }
+  }
+}

@@ -1,0 +1,67 @@
+@selectedColor: #3498db;
+.grid-item-inbox {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 1px solid black;
+  &-selected {
+    border: 1px solid @selectedColor;
+    .grid-item-inbox-tool {
+      display: block;
+    }
+  }
+  &-tool {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    &-bar {
+      position: absolute;
+      bottom: 0;
+      z-index: 999;
+      // border: 1px solid @selectedColor;
+      background: @selectedColor;
+      color: #fff;
+      padding: 2px;
+      font-size: 12px;
+    }
+    &-add {
+      position: absolute;
+      background: @selectedColor;
+      color: #fff;
+      border-radius: 50%;
+      width: 14px;
+      height: 14px;
+      line-height: 14px;
+      text-align: center;
+      font-size: 12px;
+      cursor: pointer;
+
+      @offset: -20px;
+      &.top {
+        top: @offset;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      &.right {
+        right: @offset;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      &.bottom {
+        bottom: @offset;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      &.left {
+        left: @offset;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}

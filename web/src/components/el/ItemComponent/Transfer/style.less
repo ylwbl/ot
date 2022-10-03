@@ -1,0 +1,41 @@
+.transfer-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  position: relative;
+  height: 100%;
+  .transfer-fieldset {
+    border: 1px dashed #4cb2ff !important;
+    width: 48%;
+    height: 100%;
+    margin-bottom: 0;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    min-height: 200px;
+    background-color: #ebf2f8 !important;
+    position: relative;
+    legend {
+      color: #4cb2ff;
+      padding: 0 8px;
+      font-size: 12px;
+    }
+    .transfer-toSelect-tag {
+      cursor: pointer;
+      animation-duration: 4s;
+      &:hover {
+        user-select: none;
+      }
+    }
+  }
+  .transfer-fieldset-splitter {
+    width: 5px;
+    height: auto;
+    margin: 5px 0 0 0;
+    right: auto;
+    left: 476px;
+    top: 26px;
+    background: #dfe8f6;
+  }
+}
