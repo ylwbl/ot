@@ -8,6 +8,7 @@ import {
 import { ElForm, ElSearchTable, ElNotification } from '@/components/el';
 import { getUdcList, createUdc, updateUdc, deleteUdcBatch } from './service';
 import { FormInstance, Modal } from 'antd';
+import createClient from './utils/webscoket';
 import { isEmpty } from 'ramda';
 interface State {
   udcVisible: boolean;
@@ -17,6 +18,7 @@ interface State {
   tableRef: any;
   action: string;
   deleteLoading: boolean;
+  wsClient: any;
 }
 class Dashboard extends React.Component<any, State> {
   constructor(props) {
@@ -28,11 +30,15 @@ class Dashboard extends React.Component<any, State> {
       udcSaveLoading: false,
       deleteLoading: false,
       tableRef: null,
-      action: ''
+      action: '',
+      wsClient: null
     };
   }
   componentDidMount() {
     console.log(this.props);
+    this.setState({
+      wsClient: createClient()
+    })
   }
   handleCreate = () => {
     this.setState({
