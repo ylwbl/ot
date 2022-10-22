@@ -104,11 +104,11 @@ class ElHeader extends React.Component<Props, State> {
           <span className='Menu-text'>菜单</span>
         </div>
         <div className='el-layout-header-item Logo'>
-          <div className='LogoName'></div>
+          {/* <div className='LogoName'></div> */}
         </div>
         <div className='el-layout-header-item Content'></div>
         <div className='el-layout-header-item  Icon'>
-          <div className='btn'>
+          {/* <div className='btn'>
             <BellWhite />
           </div>
           <div className='btn' hidden={this.state.isFullscreen}>
@@ -123,7 +123,7 @@ class ElHeader extends React.Component<Props, State> {
           </div>
           <div className='btn'>
             <EditWhite onClick={() => { }} />
-          </div>
+          </div> */}
         </div>
         <UserMenu />
       </Header>
