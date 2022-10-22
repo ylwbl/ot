@@ -204,20 +204,6 @@ class Authorized extends React.Component<Props, State> {
     return (
       <CacheSwitch>
         <React.Suspense fallback={<ContentLoading />}>
-          <button
-            onClick={() => {
-              console.log(getCachingComponents(), getCachingKeys());
-            }}
-          >
-            asd
-          </button>
-          <button
-            onClick={() => {
-              dropByCacheKeyAndPathname('pageRender', '/pageRender/1/1');
-            }}
-          >
-            123
-          </button>
           {this.renderRoutes()}
         </React.Suspense>
       </CacheSwitch>

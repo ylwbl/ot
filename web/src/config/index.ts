@@ -6,7 +6,7 @@ const routes = [
     path: '/dashboard',
     name: 'dashboard',
     meta: { title: '首页', hidden: true, noAuth: true },
-    component: React.lazy(() => import('@/page/Dashboard'))
+    component: React.lazy(() => import('@/page/ot'))
   },
   {
     path: '/403',
