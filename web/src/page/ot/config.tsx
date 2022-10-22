@@ -4,100 +4,28 @@ import {
   ActionButtonProps
 } from '@/components/el/ElSearchTable';
 import { ElFormProps } from '@/components/el/ElForm';
-import { AddBlue, DeleteRed, EditBlue } from '@/components/el/ElIcon';
+import { AddBlue, DeleteRed, EditBlue, ShelvesCyan } from '@/components/el/ElIcon';
 const getTableColumns = (): Array<ElSearchTableColumns> => [
   {
-    title: '产品代码',
-    align: 'center',
-    dataIndex: 'domainCode'
-  },
-  {
-    title: '用户定义码',
-    align: 'center',
-    dataIndex: 'udcCode'
-  },
-  {
-    title: '定义码名称',
-    // width: 100,
-    align: 'center',
-    dataIndex: 'udcName'
-  },
-  {
-    title: '自定义代码',
-    // width: 100,
-    align: 'center',
-    dataIndex: 'udcVal'
-  },
-  {
-    title: '说明',
+    title: '测试用例名称',
     // width: 100,
     align: 'center',
     dataIndex: 'valDesc'
   },
-  {
-    title: 'hdFlag',
-    // width: 100,
-    align: 'center',
-    dataIndex: 'hdFlag',
-    render: (value: boolean) => {
-      return value ? '是' : '否';
-    }
-  }
 ];
 
 const getTableSearchFormItems: ElFormProps = {
   items: [
-    {
-      title: '产品代码',
-      name: 'domainCode',
-      span: 6,
-      formOption: {
-        type: '$input',
-        props: {
-          placeholder: '产品代码'
-        }
-      }
-    },
-    {
-      title: '用户定义码',
-      name: 'udcCode',
-      span: 6,
-      formOption: {
-        type: '$input',
-        props: {
-          placeholder: '用户定义码'
-        }
-      }
-    },
-    {
-      title: '自定义代码',
-      name: 'udcVal',
-      span: 6,
-      formOption: {
-        type: '$input',
-        props: {
-          placeholder: '自定义代码'
-        }
-      }
-    },
-    {
-      title: '说明',
-      name: 'valDesc',
-      span: 6,
-      formOption: {
-        type: '$input',
-        props: {
-          placeholder: '说明'
-        }
-      }
-    }
+    
   ]
 };
 const getActionButtons = ({
   handleCreate,
   handleEdit,
   deleteLoading,
-  handleDelete
+  handleDelete,
+  copyLoading,
+  handleCopy
 }): Array<ActionButtonProps> => {
   return [
     {
@@ -132,120 +60,25 @@ const getActionButtons = ({
       // maxSelection: 1,
       location: 'left',
       handleClick: ({ selectedRowKeys }) => handleDelete(selectedRowKeys)
+    },
+    {
+      text: '复制',
+      key: 'delete',
+      icon: <ShelvesCyan />,
+      disabled: copyLoading,
+      hidden: false,
+      minSelection: 1,
+      loading: deleteLoading,
+      needConfirm: true,
+      // maxSelection: 1,
+      location: 'left',
+      handleClick: ({ selectedRowKeys }) => handleCopy(selectedRowKeys)
     }
   ];
 };
-const getEditForm = ({ formData }): ElFormProps => {
-  return {
-    labelCol: { span: 6 },
-    wrapperCol: { span: 18 },
-    items: [
-      {
-        title: '产品代码',
-        name: 'domainCode',
-        span: 24,
-        rules: [
-          {
-            required: true,
-            message: '请输入产品代码!'
-          }
-        ],
-        formOption: {
-          type: '$input',
-          props: {
-            disabled: formData.id,
-            placeholder: '产品代码'
-          }
-        }
-      },
-      {
-        title: '用户定义码',
-        name: 'udcCode',
-        span: 24,
-        rules: [
-          {
-            required: true,
-            message: '请输入用户定义码!'
-          }
-        ],
-        formOption: {
-          type: '$input',
-          props: {
-            disabled: formData.id,
-            placeholder: '用户定义码'
-          }
-        }
-      },
-      {
-        title: '定义码名称',
-        name: 'udcName',
-        span: 24,
-        rules: [
-          {
-            required: true,
-            message: '请输入定义码名称!'
-          }
-        ],
-        formOption: {
-          type: '$input',
-          props: {
-            disabled: formData.id,
-            placeholder: '定义码名称'
-          }
-        }
-      },
-      {
-        title: '自定义代码',
-        name: 'udcVal',
-        span: 24,
-        rules: [
-          {
-            required: true,
-            message: '请输入自定义代码!'
-          }
-        ],
-        formOption: {
-          type: '$input',
-          props: {
-            disabled: formData.id,
-            placeholder: '自定义代码'
-          }
-        }
-      },
-      {
-        title: '说明',
-        name: 'valDesc',
-        span: 24,
-        rules: [
-          {
-            required: true,
-            message: '请输入说明!'
-          }
-        ],
-        formOption: {
-          type: '$input',
-          props: {
-            placeholder: '说明'
-          }
-        }
-      },
-      {
-        title: '硬编码',
-        name: 'hdFlag',
-        span: 24,
-        formOption: {
-          type: '$switch',
-          props: {
-            placeholder: '是否硬编码'
-          }
-        }
-      }
-    ]
-  };
-};
+
 export {
   getTableSearchFormItems,
   getTableColumns,
   getActionButtons,
-  getEditForm
 };

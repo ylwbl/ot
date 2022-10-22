@@ -5,8 +5,14 @@ const routes = [
   {
     path: '/dashboard',
     name: 'dashboard',
-    meta: { title: '首页', hidden: true, noAuth: true },
+    meta: { title: '测试用例', hidden: true, noAuth: true },
     component: React.lazy(() => import('@/page/ot'))
+  },
+  {
+    path: '/dashboard/:id',
+    name: 'dashboard',
+    meta: { title: '测试用例详情', hidden: true, noAuth: true },
+    component: React.lazy(() => import('@/page/ot/detail'))
   },
   {
     path: '/403',
