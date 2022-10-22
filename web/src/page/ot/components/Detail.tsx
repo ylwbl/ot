@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col, Spin, Button } from 'antd';
-import {JsonView, CommandList} from '../components';
+import {JsonView, CommandList} from '.';
 
 
 
