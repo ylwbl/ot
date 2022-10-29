@@ -18,11 +18,15 @@ function initDB() {
     // }
   );
 }
-app.use('/api/testcase', testCase.router);
 initDB();
 
 app.use(cookieParser());
 app.use(bodyParser.json());
+
+
+
+app.use('/api/testcase', testCase.router);
+
 //监听端口
 app.listen(8081, (err) => {
   if (err) {

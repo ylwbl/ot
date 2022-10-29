@@ -6,7 +6,7 @@ import {
   getEditForm
 } from './config';
 import { ElSearchTable, ElNotification, ElForm } from '@/components/el';
-import { getUdcList } from './service';
+import { getList, save } from './service';
 import { FormInstance, Modal } from 'antd';
 interface State {
   visiible: boolean;
@@ -64,8 +64,10 @@ class Dashboard extends React.Component<any, State> {
     const { formRef } = this.state;
     formRef && formRef.resetFields();
   }
-  handleSave = () => {
-
+  handleSave = async () => {
+    const data = await this.state.formRef.validateFields();
+    const res = await save(data);
+    console.log(res);
   }
   render() {
     return (
@@ -109,11 +111,11 @@ class Dashboard extends React.Component<any, State> {
           searchFormProps={getTableSearchFormItems}
           tableProxy={{
             request: (paramData) => {
-              return getUdcList(paramData);
+              return getList(paramData);
             },
             props: {
               success: 'success',
-              result: 'data.records',
+              result: 'data.result',
               total: 'data.total'
             },
 

@@ -10,7 +10,7 @@ const routes = [
   },
   {
     path: '/dashboard/:id',
-    name: 'dashboard',
+    name: 'dashboardDetail',
     meta: { title: '测试用例详情', hidden: true, noAuth: true },
     component: React.lazy(() => import('@/page/ot/detail'))
   },

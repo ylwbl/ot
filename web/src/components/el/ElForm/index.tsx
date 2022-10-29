@@ -85,6 +85,7 @@ type types =
   | '$auto-complete'
   | '$tag-select'
   | '$rangeNumber'
+  | '$json'
   | '$transfer';
 
 type allTypes = types | ELFormItemType;

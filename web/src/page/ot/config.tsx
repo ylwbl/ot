@@ -10,7 +10,7 @@ const getTableColumns = (): Array<ElSearchTableColumns> => [
     title: '测试用例名称',
     // width: 100,
     align: 'center',
-    dataIndex: 'valDesc'
+    dataIndex: 'name'
   },
 ];
 
@@ -63,7 +63,7 @@ const getActionButtons = ({
     },
     {
       text: '复制',
-      key: 'delete',
+      key: 'copy',
       icon: <ShelvesCyan />,
       disabled: copyLoading,
       hidden: false,
@@ -82,105 +82,39 @@ const getEditForm = ({ formData }): ElFormProps => {
     wrapperCol: { span: 18 },
     items: [
       {
-        title: '产品代码',
-        name: 'domainCode',
+        title: '测试用例名称',
+        name: 'name',
         span: 24,
         rules: [
           {
             required: true,
-            message: '请输入产品代码!'
+            message: '请输入测试用例名称!'
           }
         ],
         formOption: {
           type: '$input',
           props: {
-            disabled: formData.id,
-            placeholder: '产品代码'
+            placeholder: '测试用例名称'
           }
         }
       },
       {
-        title: '用户定义码',
-        name: 'udcCode',
+        title: '测试用例JSON',
+        name: 'schema',
         span: 24,
         rules: [
           {
             required: true,
-            message: '请输入用户定义码!'
+            message: '请输入测试用例JSON!'
           }
         ],
         formOption: {
-          type: '$input',
+          type: '$json',
           props: {
-            disabled: formData.id,
-            placeholder: '用户定义码'
+            placeholder: '测试用例JSON'
           }
         }
       },
-      {
-        title: '定义码名称',
-        name: 'udcName',
-        span: 24,
-        rules: [
-          {
-            required: true,
-            message: '请输入定义码名称!'
-          }
-        ],
-        formOption: {
-          type: '$input',
-          props: {
-            disabled: formData.id,
-            placeholder: '定义码名称'
-          }
-        }
-      },
-      {
-        title: '自定义代码',
-        name: 'udcVal',
-        span: 24,
-        rules: [
-          {
-            required: true,
-            message: '请输入自定义代码!'
-          }
-        ],
-        formOption: {
-          type: '$input',
-          props: {
-            disabled: formData.id,
-            placeholder: '自定义代码'
-          }
-        }
-      },
-      {
-        title: '说明',
-        name: 'valDesc',
-        span: 24,
-        rules: [
-          {
-            required: true,
-            message: '请输入说明!'
-          }
-        ],
-        formOption: {
-          type: '$input',
-          props: {
-            placeholder: '说明'
-          }
-        }
-      },
-      {
-        title: '硬编码',
-        name: 'hdFlag',
-        span: 24,
-        formOption: {
-          type: '$switch',
-          props: {
-            placeholder: '是否硬编码'
-          }
-        }
-      }
     ]
   };
 };

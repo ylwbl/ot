@@ -23,7 +23,7 @@ import {
   Input
 } from '../ItemComponent';
 import { ElImage } from '@/components/el';
-
+import { ElJson } from '@/components/el';
 import { ElFormItem } from '../../../projectConfig'; //各域业务组件引入
 
 interface RegisterItem {
@@ -31,6 +31,12 @@ interface RegisterItem {
   render: Function;
 }
 let originRenderOptions = [
+  {
+    type: '$json',
+    render: (props, events) => {
+      return <ElJson {...props} {...events}/>;
+    }
+  },
   {
     type: '$input',
     render: (props, events) => {

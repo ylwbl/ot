@@ -18,7 +18,9 @@ import ElPlayer from './ElPlayer';
 import ElClickAway from './ElClickAway';
 import ElDescriptions from './ElDescriptions';
 import ElSearchTree from './ElSearchTree';
+import ElJson from './ElJson';
 export {
+  ElJson,
   ElCard,
   ElSearchTable,
   ElPageHeader,
