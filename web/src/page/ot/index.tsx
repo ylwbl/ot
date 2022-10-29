@@ -2,13 +2,14 @@ import React from 'react';
 import {
   getTableSearchFormItems,
   getTableColumns,
-  getActionButtons
+  getActionButtons,
+  getEditForm
 } from './config';
-import { ElSearchTable, ElNotification } from '@/components/el';
+import { ElSearchTable, ElNotification, ElForm } from '@/components/el';
 import { getUdcList } from './service';
 import { FormInstance, Modal } from 'antd';
 interface State {
-  udcVisible: boolean;
+  visiible: boolean;
   formRef: FormInstance;
   formData: object;
   udcSaveLoading: boolean;
@@ -21,7 +22,7 @@ class Dashboard extends React.Component<any, State> {
   constructor(props) {
     super(props);
     this.state = {
-      udcVisible: false,
+      visiible: false,
       formRef: null,
       formData: {},
       udcSaveLoading: false,
@@ -36,7 +37,7 @@ class Dashboard extends React.Component<any, State> {
   }
   handleCreate = () => {
     this.setState({
-      udcVisible: true,
+      visiible: true,
       formData: {
         hdFlag: false
       },
@@ -45,7 +46,7 @@ class Dashboard extends React.Component<any, State> {
   };
   handleEdit = (selectedRows: any) => {
     this.setState({
-      udcVisible: true,
+      visiible: true,
       formData: selectedRows[0],
       action: '编辑'
     });
@@ -56,9 +57,38 @@ class Dashboard extends React.Component<any, State> {
   handleCopy = () => {
 
   }
+  closeModal = () => {
+    this.setState({
+      visiible: false
+    });
+    const { formRef } = this.state;
+    formRef && formRef.resetFields();
+  }
+  handleSave = () => {
+
+  }
   render() {
     return (
       <>
+        <Modal
+          destroyOnClose={false}
+          visible={this.state.visiible}
+          title={`udc${this.state.action}`}
+          onCancel={this.closeModal}
+          onOk={this.handleSave}
+          okText='保存'
+          forceRender={true}
+          okButtonProps={{
+            disabled: this.state.udcSaveLoading,
+            loading: this.state.udcSaveLoading
+          }}
+        >
+          <ElForm
+            data={this.state.formData}
+            formProps={getEditForm({ formData: this.state.formData })}
+            onRef={(formRef) => this.setState({ formRef })}
+          />
+        </Modal>
         <ElSearchTable
           tableId='sys_udc'
           onRef={(tableRef) => {

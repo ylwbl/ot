@@ -76,9 +76,117 @@ const getActionButtons = ({
     }
   ];
 };
-
+const getEditForm = ({ formData }): ElFormProps => {
+  return {
+    labelCol: { span: 6 },
+    wrapperCol: { span: 18 },
+    items: [
+      {
+        title: '产品代码',
+        name: 'domainCode',
+        span: 24,
+        rules: [
+          {
+            required: true,
+            message: '请输入产品代码!'
+          }
+        ],
+        formOption: {
+          type: '$input',
+          props: {
+            disabled: formData.id,
+            placeholder: '产品代码'
+          }
+        }
+      },
+      {
+        title: '用户定义码',
+        name: 'udcCode',
+        span: 24,
+        rules: [
+          {
+            required: true,
+            message: '请输入用户定义码!'
+          }
+        ],
+        formOption: {
+          type: '$input',
+          props: {
+            disabled: formData.id,
+            placeholder: '用户定义码'
+          }
+        }
+      },
+      {
+        title: '定义码名称',
+        name: 'udcName',
+        span: 24,
+        rules: [
+          {
+            required: true,
+            message: '请输入定义码名称!'
+          }
+        ],
+        formOption: {
+          type: '$input',
+          props: {
+            disabled: formData.id,
+            placeholder: '定义码名称'
+          }
+        }
+      },
+      {
+        title: '自定义代码',
+        name: 'udcVal',
+        span: 24,
+        rules: [
+          {
+            required: true,
+            message: '请输入自定义代码!'
+          }
+        ],
+        formOption: {
+          type: '$input',
+          props: {
+            disabled: formData.id,
+            placeholder: '自定义代码'
+          }
+        }
+      },
+      {
+        title: '说明',
+        name: 'valDesc',
+        span: 24,
+        rules: [
+          {
+            required: true,
+            message: '请输入说明!'
+          }
+        ],
+        formOption: {
+          type: '$input',
+          props: {
+            placeholder: '说明'
+          }
+        }
+      },
+      {
+        title: '硬编码',
+        name: 'hdFlag',
+        span: 24,
+        formOption: {
+          type: '$switch',
+          props: {
+            placeholder: '是否硬编码'
+          }
+        }
+      }
+    ]
+  };
+};
 export {
   getTableSearchFormItems,
   getTableColumns,
   getActionButtons,
+  getEditForm
 };
