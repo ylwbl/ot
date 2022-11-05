@@ -29,7 +29,7 @@ class Dashboard extends React.Component<any, State> {
       deleteLoading: false,
       tableRef: null,
       action: '',
-      copyLoading: false,
+      copyLoading: false
     };
   }
   componentDidMount() {
@@ -38,9 +38,7 @@ class Dashboard extends React.Component<any, State> {
   handleCreate = () => {
     this.setState({
       visiible: true,
-      formData: {
-        hdFlag: false
-      },
+      formData: {},
       action: '新增'
     });
   };
@@ -51,24 +49,32 @@ class Dashboard extends React.Component<any, State> {
       action: '编辑'
     });
   };
-  handleDelete = () =>  {
-
-  }
-  handleCopy = () => {
-
-  }
+  handleDelete = () => {};
+  handleCopy = () => {};
   closeModal = () => {
     this.setState({
       visiible: false
     });
     const { formRef } = this.state;
     formRef && formRef.resetFields();
-  }
+  };
   handleSave = async () => {
     const data = await this.state.formRef.validateFields();
     const res = await save(data);
+    if (res.success) {
+      ElNotification({
+        type: 'success',
+        message: '保存成功'
+      });
+      this.props.history.push(`/dashboard/${res.data}`);
+    } else {
+      ElNotification({
+        type: 'error',
+        message: res.msg
+      });
+    }
     console.log(res);
-  }
+  };
   render() {
     return (
       <>
@@ -92,7 +98,8 @@ class Dashboard extends React.Component<any, State> {
           />
         </Modal>
         <ElSearchTable
-          tableId='sys_udc'
+          tableId='ot'
+          rowKey='_id'
           onRef={(tableRef) => {
             this.setState({
               tableRef

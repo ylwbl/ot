@@ -6,7 +6,7 @@ import {
   getEditForm
 } from './config';
 import { ElForm, ElSearchTable, ElNotification } from '@/components/el';
-import { getUdcList, createUdc, updateUdc, deleteUdcBatch } from './service';
+import { getList, updateUdc, deleteUdcBatch } from './service';
 import { FormInstance, Modal } from 'antd';
 import { isEmpty } from 'ramda';
 interface State {
@@ -73,7 +73,6 @@ class Dashboard extends React.Component<any, State> {
       if (data.id) {
         res = await updateUdc(data);
       } else {
-        res = await createUdc(data);
       }
       if (res.success) {
         ElNotification({
@@ -158,7 +157,11 @@ class Dashboard extends React.Component<any, State> {
           searchFormProps={getTableSearchFormItems}
           tableProxy={{
             request: (paramData) => {
-              return getUdcList(paramData);
+              console.log(this.props);
+              return getList({
+                ...paramData,
+                testCase: this.props.match.id
+              });
             },
             props: {
               success: 'success',

@@ -5,8 +5,8 @@ import request from '@/utils/request';
  * @param data 
  * @returns 
  */
-export const getUdcList = (data) => {
-  return request('/yst-system/sys/codes/q', {
+export const getList = (data) => {
+  return request('/api/testcasedetail/search', {
     method: 'post',
     query: data
   });
@@ -28,8 +28,8 @@ export const searchUdcById = (id) => {
  * @param data 
  * @returns 
  */
-export const createUdc = (data) => {
-  return request('/yst-system/sys/codes', {
+export const save = (data) => {
+  return request('/api/testcase', {
     method: 'post',
     query: data
   });
